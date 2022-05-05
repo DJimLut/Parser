@@ -1,0 +1,26 @@
+
+========
+Kickflip
+========
+
+<stmt_list> --> <stmt> { <stmt> }
+
+<stmt> --> <print_stmt> | <let_stmt> | <loop_stmt> | <if_stmt>
+
+<print_stmt> --> PRINT <expr> ;
+<let_stmt> --> LET <id> = <expr> ;
+<loop_stmt> --> LOOP ( <bool_expr> ) <stmt_list> ENDLOOP
+<if_stmt> --> IF ( <bool_expr> ) <stmt_list> { OTHIF ( <bool_expr> ) <stmt_list> } [ OTHERWISE <stmt_list> ] ENDIF
+
+<expr> --> <expr> + <term> | <expr> - <term> | <term>
+<term> --> <term> * <factor> | <term> / <factor> | <term> R <factor> | <factor>
+<factor> --> ( <expr> ) | <value>
+
+<bool_expr> --> <bool_expr> "|" <bool_term> | <bool_term>
+<bool_term> --> <bool_term> & <bool_factor> | <bool_factor>
+<bool_factor> --> <value> == <value> | <value> < <value> | <value> > <value> | [~] ( <bool_expr> )
+
+<value> --> <id> | <literal>
+
+<id> --> /*Any identifier recognized by the lexical analyzer*/
+<literal> --> /*Any literal recognized by the lexical analyzer*/
